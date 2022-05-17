@@ -18,12 +18,24 @@ class App extends Component {
   };
   render() {
     if (this.state.route === "page1") {
-      return <Page1 onRouteChange={this.onRouteChange} />;
+      return (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Page1 onRouteChange={this.onRouteChange} />
+        </Suspense>
+      );
     }
     if (this.state.route === "page2") {
-      return <Page2Lazy onRouteChange={this.onRouteChange} />;
+      return (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Page2Lazy onRouteChange={this.onRouteChange} />
+        </Suspense>
+      );
     }
-    return <Page3Lazy onRouteChange={this.onRouteChange} />;
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Page3Lazy onRouteChange={this.onRouteChange} />
+      </Suspense>
+    );
   }
 }
 
